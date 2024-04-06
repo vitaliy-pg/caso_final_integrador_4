@@ -25,5 +25,34 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class EditorDeTextoInteractivo {
-}
+class PortadaInicio extends JFrame {
+
+    public PortadaInicio() {
+        super("Portada de Inicio");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JLabel titleLabel = new JLabel("Editor de Texto Interactivo");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(titleLabel);
+
+        JButton startButton = new JButton("Iniciar Editor de Texto");
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirEditorDeTexto();
+            }
+        });
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+        panel.add(startButton);
+
+        add(panel);
+        setVisible(true);
+    }
