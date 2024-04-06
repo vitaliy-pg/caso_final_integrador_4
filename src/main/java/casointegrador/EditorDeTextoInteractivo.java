@@ -65,3 +65,10 @@ class PortadaInicio extends JFrame {
         SwingUtilities.invokeLater(PortadaInicio::new);
     }
 }
+
+public class EditorDeTextoInteractivo extends JFrame {
+    private JTextArea textArea;
+    private JFileChooser fileChooser;
+    private File archivoActual;
+    private List<Contacto> listaContactos;
+    private List<EditorDeTextoInteractivo> ventanas;
