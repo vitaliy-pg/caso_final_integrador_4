@@ -56,3 +56,12 @@ class PortadaInicio extends JFrame {
         add(panel);
         setVisible(true);
     }
+    private void abrirEditorDeTexto() {
+        EditorDeTextoInteractivo editor = new EditorDeTextoInteractivo();
+        dispose(); // Cierra la portada de inicio cuando se abre el editor de texto
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(PortadaInicio::new);
+    }
+}
