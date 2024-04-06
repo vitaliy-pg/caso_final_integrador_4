@@ -372,3 +372,10 @@ public class EditorDeTextoInteractivo extends JFrame {
             textArea.setForeground(newColor);
         }
     }
+    private void estadisticasTexto() {
+        String texto = textArea.getText();
+        int caracteres = texto.length();
+        int palabras = texto.split("\\s+").length;
+        int lineas = texto.split("\n").length;
+        JOptionPane.showMessageDialog(this, "Estadísticas del Texto:\nCaracteres: " + caracteres + "\nPalabras: " + palabras + "\nLíneas: " + lineas, "Estadísticas de Texto", JOptionPane.INFORMATION_MESSAGE);
+    }
