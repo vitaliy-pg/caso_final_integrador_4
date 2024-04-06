@@ -235,3 +235,43 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir el documento.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private void compararArchivos() {
+        fileChooser.setMultiSelectionEnabled(true);
+        fileChooser.setDialogTitle("Seleccione dos archivos para comparar");
+        fileChooser.setApproveButtonText("Comparar");
+        int resultado = fileChooser.showOpenDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos = fileChooser.getSelectedFiles();
+            if (archivos.length == 2) {
+                try {
+                    Scanner scanner1 = new Scanner(archivos[0]);
+                    Scanner scanner2 = new Scanner(archivos[1]);
+                    StringBuilder diff = new StringBuilder();
+                    while (scanner1.hasNext() && scanner2.hasNext()) {
+                        String linea1 = scanner1.nextLine();
+                        String linea2 = scanner2.nextLine();
+                        if (!linea1.equals(linea2)) {
+                            diff.append("Diferencia en archivo 1: ").append(linea1).append("\n");
+                            diff.append("Diferencia en archivo 2: ").append(linea2).append("\n");
+                        }
+                    }
+                    if (!scanner1.hasNext() && scanner2.hasNext()) {
+                        diff.append("Archivo 2 tiene más líneas que el archivo 1");
+                    } else if (scanner1.hasNext() && !scanner2.hasNext()) {
+                        diff.append("Archivo 1 tiene más líneas que el archivo 2");
+                    }
+                    if (diff.length() == 0) {
+                        JOptionPane.showMessageDialog(this, "Los archivos son iguales.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Diferencias encontradas:\n" + diff.toString(), "Info", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    scanner1.close();
+                    scanner2.close();
+                } catch (FileNotFoundException e) {
+                    JOptionPane.showMessageDialog(this, "Error al comparar archivos.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione exactamente dos archivos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
