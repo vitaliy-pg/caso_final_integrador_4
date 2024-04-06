@@ -275,3 +275,8 @@ public class EditorDeTextoInteractivo extends JFrame {
             }
         }
     }
+    private void contarPalabras() {
+        String texto = textArea.getText();
+        int cantidadPalabras = texto.split("\\s+").length;
+        JOptionPane.showMessageDialog(this, "El documento tiene " + cantidadPalabras + " palabras.", "Conteo de Palabras", JOptionPane.INFORMATION_MESSAGE);
+    }
