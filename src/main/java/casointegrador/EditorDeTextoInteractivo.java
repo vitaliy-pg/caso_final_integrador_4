@@ -294,3 +294,27 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, "La palabra '" + palabra + "' aparece " + contador + " veces en el documento.", "Búsqueda de Palabra", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+    private void gestionarContactos() {
+        JPanel panel = new JPanel(new GridLayout(0, 3));
+
+        JTextField nombreField = new JTextField(10);
+        JTextField emailField = new JTextField(10);
+        JTextField telefonoField = new JTextField(10);
+
+        panel.add(new JLabel("Nombre:"));
+        panel.add(nombreField);
+        panel.add(new JLabel("Email:"));
+        panel.add(emailField);
+        panel.add(new JLabel("Teléfono:"));
+        panel.add(telefonoField);
+
+        int resultado = JOptionPane.showConfirmDialog(this, panel, "Añadir Contacto", JOptionPane.OK_CANCEL_OPTION);
+        if (resultado == JOptionPane.OK_OPTION) {
+            String nombre = nombreField.getText();
+            String email = emailField.getText();
+            String telefono = telefonoField.getText();
+            Contacto nuevoContacto = new Contacto(nombre, email, telefono);
+            listaContactos.add(nuevoContacto);
+            JOptionPane.showMessageDialog(this, "Contacto agregado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
