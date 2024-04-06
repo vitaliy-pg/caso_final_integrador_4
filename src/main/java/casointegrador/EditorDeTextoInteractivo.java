@@ -81,3 +81,48 @@ public class EditorDeTextoInteractivo extends JFrame {
         archivoActual = null;
         listaContactos = new ArrayList<>();
         ventanas = new ArrayList<>();
+
+        JButton guardarButton = new JButton("Guardar");
+        guardarButton.addActionListener(e -> guardarDocumento());
+
+        JButton listarButton = new JButton("Listar Documentos");
+        listarButton.addActionListener(e -> mostrarDocumentos());
+
+        JButton compararButton = new JButton("Comparar Archivos");
+        compararButton.addActionListener(e -> compararArchivos());
+
+        JButton contarPalabrasButton = new JButton("Contar Palabras");
+        contarPalabrasButton.addActionListener(e -> contarPalabras());
+
+        JButton buscarPalabraButton = new JButton("Buscar Palabra");
+        buscarPalabraButton.addActionListener(e -> buscarPalabra());
+
+        JButton gestionarContactosButton = new JButton("Gestionar Contactos");
+        gestionarContactosButton.addActionListener(e -> gestionarContactos());
+
+        JButton verContactosButton = new JButton("Ver Contactos");
+        verContactosButton.addActionListener(e -> verContactos());
+
+        JButton abrirVentanaButton = new JButton("Abrir Nueva Ventana");
+        abrirVentanaButton.addActionListener(e -> abrirNuevaVentana());
+
+        JButton dibujarButton = new JButton("Dibujar");
+        dibujarButton.addActionListener(e -> dibujar());
+
+        JButton validarEmailButton = new JButton("Validar Email");
+        validarEmailButton.addActionListener(e -> validarEmail());
+
+        JButton cambiarTamanoTextoButton = new JButton("Cambiar Tamaño del Texto");
+        cambiarTamanoTextoButton.addActionListener(e -> cambiarTamanoTexto());
+
+        JButton cambiarColorTextoButton = new JButton("Cambiar Color del Texto");
+        cambiarColorTextoButton.addActionListener(e -> cambiarColorTexto());
+
+        JButton estadisticasTextoButton = new JButton("Estadísticas de Texto");
+        estadisticasTextoButton.addActionListener(e -> estadisticasTexto());
+
+        JButton imprimirButton = new JButton("Imprimir");
+        imprimirButton.addActionListener(e -> imprimir());
+
+        JButton verTodasLasFuncionesButton = new JButton("Ver Todas las Funciones");
+        verTodasLasFuncionesButton.addActionListener(e -> verTodasLasFunciones());
