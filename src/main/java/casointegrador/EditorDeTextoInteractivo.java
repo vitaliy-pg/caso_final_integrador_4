@@ -366,3 +366,9 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private void cambiarColorTexto() {
+        Color newColor = JColorChooser.showDialog(this, "Seleccionar Color del Texto", textArea.getForeground());
+        if (newColor != null) {
+            textArea.setForeground(newColor);
+        }
+    }
