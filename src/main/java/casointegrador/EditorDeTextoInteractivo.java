@@ -139,3 +139,21 @@ public class EditorDeTextoInteractivo extends JFrame {
         archivoMenu.add(imprimirMenuItem);
         menuBar.add(archivoMenu);
         setJMenuBar(menuBar);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0, 1));
+        buttonPanel.add(guardarButton);
+        buttonPanel.add(listarButton);
+        buttonPanel.add(compararButton);
+        buttonPanel.add(contarPalabrasButton);
+        buttonPanel.add(buscarPalabraButton);
+        buttonPanel.add(gestionarContactosButton);
+        buttonPanel.add(verContactosButton);
+        buttonPanel.add(abrirVentanaButton);
+        buttonPanel.add(dibujarButton);
+        buttonPanel.add(validarEmailButton);
+        buttonPanel.add(cambiarTamanoTextoButton);
+        buttonPanel.add(cambiarColorTextoButton);
+        buttonPanel.add(estadisticasTextoButton);
+        buttonPanel.add(imprimirButton);
+        buttonPanel.add(verTodasLasFuncionesButton);
