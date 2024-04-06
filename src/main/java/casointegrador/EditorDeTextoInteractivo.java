@@ -157,3 +157,32 @@ public class EditorDeTextoInteractivo extends JFrame {
         buttonPanel.add(estadisticasTextoButton);
         buttonPanel.add(imprimirButton);
         buttonPanel.add(verTodasLasFuncionesButton);
+
+        JLabel mousePositionLabel = new JLabel("Posición del Ratón:");
+        add(mousePositionLabel, BorderLayout.NORTH);
+
+        textArea.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                mousePositionLabel.setText("Posición del Ratón: (" + e.getX() + ", " + e.getY() + ")");
+            }
+        });
+
+        JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+        verticalScrollBar.addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                int value = e.getValue();
+                int maximum = verticalScrollBar.getMaximum() - verticalScrollBar.getVisibleAmount();
+                double percentage = (double) value / maximum * 100;
+                setTitle("Editor de Texto Interactivo - " + String.format("%.2f", percentage) + "%");
+            }
+        });
+
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.WEST);
+
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
