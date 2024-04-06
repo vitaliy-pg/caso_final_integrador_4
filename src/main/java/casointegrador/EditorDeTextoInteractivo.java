@@ -338,3 +338,13 @@ public class EditorDeTextoInteractivo extends JFrame {
         DibujoPanel dibujoPanel = new DibujoPanel();
         JOptionPane.showMessageDialog(this, dibujoPanel, "Dibujar", JOptionPane.PLAIN_MESSAGE);
     }
+    private void validarEmail() {
+        String email = JOptionPane.showInputDialog(this, "Ingrese el correo electrónico a validar:");
+        if (email != null && !email.isEmpty()) {
+            if (isValidEmailAddress(email)) {
+                JOptionPane.showMessageDialog(this, "El correo electrónico es válido.", "Validación de Email", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Validación de Email", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
