@@ -329,3 +329,8 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, contactosStr.toString(), "Contactos Registrados", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    private void abrirNuevaVentana() {
+        EditorDeTextoInteractivo nuevaVentana = new EditorDeTextoInteractivo();
+        ventanas.add(nuevaVentana);
+    }
