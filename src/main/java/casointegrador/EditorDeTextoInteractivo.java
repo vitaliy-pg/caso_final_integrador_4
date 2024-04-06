@@ -334,3 +334,7 @@ public class EditorDeTextoInteractivo extends JFrame {
         EditorDeTextoInteractivo nuevaVentana = new EditorDeTextoInteractivo();
         ventanas.add(nuevaVentana);
     }
+    private void dibujar() {
+        DibujoPanel dibujoPanel = new DibujoPanel();
+        JOptionPane.showMessageDialog(this, dibujoPanel, "Dibujar", JOptionPane.PLAIN_MESSAGE);
+    }
