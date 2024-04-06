@@ -386,3 +386,26 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al imprimir el documento.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private void verTodasLasFunciones() {
+        StringBuilder funciones = new StringBuilder();
+        funciones.append("1. Guardar\n");
+        funciones.append("2. Listar Documentos\n");
+        funciones.append("3. Comparar Archivos\n");
+        funciones.append("4. Contar Palabras\n");
+        funciones.append("5. Buscar Palabra\n");
+        funciones.append("6. Gestionar Contactos\n");
+        funciones.append("7. Ver Contactos\n");
+        funciones.append("8. Abrir Nueva Ventana\n");
+        funciones.append("9. Dibujar\n");
+        funciones.append("10. Validar Email\n");
+        funciones.append("11. Cambiar Tamaño del Texto\n");
+        funciones.append("12. Cambiar Color del Texto\n");
+        funciones.append("13. Estadísticas de Texto\n");
+        funciones.append("14. Imprimir\n");
+        JOptionPane.showMessageDialog(this, funciones.toString(), "Todas las Funciones Disponibles", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(EditorDeTextoInteractivo::new);
+    }
+}
