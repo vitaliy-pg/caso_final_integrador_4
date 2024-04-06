@@ -209,3 +209,12 @@ public class EditorDeTextoInteractivo extends JFrame {
             }
         }
     }
+    private void mostrarDocumentos() {
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int resultado = fileChooser.showOpenDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            abrirDocumento(archivoSeleccionado);
+        }
+    }
