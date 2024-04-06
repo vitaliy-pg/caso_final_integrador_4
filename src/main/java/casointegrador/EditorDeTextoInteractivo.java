@@ -437,3 +437,8 @@ class Contacto {
         return "Nombre: " + nombre + ", Email: " + email + ", Teléfono: " + telefono;
     }
 }
+class DibujoPanel extends JPanel {
+    private Point startPoint;
+    private Point endPoint;
+    private List<Shape> shapes;
+    private ShapeType currentShapeType;
