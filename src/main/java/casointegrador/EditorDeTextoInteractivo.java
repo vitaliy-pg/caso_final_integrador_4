@@ -379,3 +379,10 @@ public class EditorDeTextoInteractivo extends JFrame {
         int lineas = texto.split("\n").length;
         JOptionPane.showMessageDialog(this, "Estadísticas del Texto:\nCaracteres: " + caracteres + "\nPalabras: " + palabras + "\nLíneas: " + lineas, "Estadísticas de Texto", JOptionPane.INFORMATION_MESSAGE);
     }
+    private void imprimir() {
+        try {
+            textArea.print();
+        } catch (PrinterException e) {
+            JOptionPane.showMessageDialog(this, "Error al imprimir el documento.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
