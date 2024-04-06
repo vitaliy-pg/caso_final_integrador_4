@@ -186,3 +186,26 @@ public class EditorDeTextoInteractivo extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+
+    private void guardarDocumento() {
+        int resultado;
+        if (archivoActual == null) {
+            resultado = fileChooser.showSaveDialog(this);
+        } else {
+            resultado = JFileChooser.APPROVE_OPTION;
+        }
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            try {
+                if (archivoActual == null) {
+                    archivoActual = fileChooser.getSelectedFile();
+                }
+                FileWriter escritor = new FileWriter(archivoActual);
+                escritor.write(textArea.getText());
+                escritor.close();
+                JOptionPane.showMessageDialog(this, "Documento guardado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al guardar el documento.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
