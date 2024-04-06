@@ -318,3 +318,14 @@ public class EditorDeTextoInteractivo extends JFrame {
             JOptionPane.showMessageDialog(this, "Contacto agregado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+    private void verContactos() {
+        if (listaContactos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay contactos registrados.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            StringBuilder contactosStr = new StringBuilder();
+            for (Contacto contacto : listaContactos) {
+                contactosStr.append(contacto.toString()).append("\n");
+            }
+            JOptionPane.showMessageDialog(this, contactosStr.toString(), "Contactos Registrados", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
