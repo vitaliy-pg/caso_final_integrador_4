@@ -442,3 +442,80 @@ class DibujoPanel extends JPanel {
     private Point endPoint;
     private List<Shape> shapes;
     private ShapeType currentShapeType;
+    private Color currentColor;
+
+    public DibujoPanel() {
+        setPreferredSize(new Dimension(400, 400));
+        setBackground(Color.WHITE);
+        shapes = new ArrayList<>();
+        currentShapeType = ShapeType.LINE;
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                startPoint = e.getPoint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                endPoint = e.getPoint();
+                Shape shape = createShape(startPoint, endPoint, currentShapeType);
+                shapes.add(shape);
+                startPoint = null;
+                endPoint = null;
+                repaint();
+            }
+        });
+
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                endPoint = e.getPoint();
+                repaint();
+            }
+        });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        for (Shape shape : shapes) {
+            g2d.draw(shape);
+        }
+
+        if (startPoint != null && endPoint != null) {
+            Shape shape = createShape(startPoint, endPoint, currentShapeType);
+            g2d.draw(shape);
+        }
+    }
+
+    private Shape createShape(Point start, Point end, ShapeType shapeType) {
+        int x = Math.min(start.x, end.x);
+        int y = Math.min(start.y, end.y);
+        int width = Math.abs(start.x - end.x);
+        int height = Math.abs(start.y - end.y);
+
+        switch (shapeType) {
+            case LINE:
+                return new Line2D.Float(start.x, start.y, end.x, end.y);
+            case RECTANGLE:
+                return new Rectangle2D.Float(x, y, width, height);
+            case CIRCLE:
+                return new Ellipse2D.Float(x, y, width, height);
+            default:
+                throw new IllegalArgumentException("Forma no válida: " + shapeType);
+        }
+    }
+
+    public void setCurrentShapeType(ShapeType shapeType) {
+        this.currentShapeType = shapeType;
+    }
+
+    public enum ShapeType {
+        LINE,
+        RECTANGLE,
+        CIRCLE
+    }
+}
