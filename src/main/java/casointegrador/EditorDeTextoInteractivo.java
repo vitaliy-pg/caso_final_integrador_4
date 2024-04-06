@@ -355,3 +355,14 @@ public class EditorDeTextoInteractivo extends JFrame {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+    private void cambiarTamanoTexto() {
+        String input = JOptionPane.showInputDialog(this, "Ingrese el nuevo tamaño del texto:");
+        try {
+            int newSize = Integer.parseInt(input);
+            Font currentFont = textArea.getFont();
+            Font newFont = currentFont.deriveFont((float) newSize);
+            textArea.setFont(newFont);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
