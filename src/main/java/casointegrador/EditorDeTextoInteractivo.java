@@ -126,3 +126,16 @@ public class EditorDeTextoInteractivo extends JFrame {
 
         JButton verTodasLasFuncionesButton = new JButton("Ver Todas las Funciones");
         verTodasLasFuncionesButton.addActionListener(e -> verTodasLasFunciones());
+        JMenuBar menuBar = new JMenuBar();
+        JMenu archivoMenu = new JMenu("Archivo");
+        JMenuItem guardarMenuItem = new JMenuItem("Guardar");
+        guardarMenuItem.addActionListener(e -> guardarDocumento());
+        archivoMenu.add(guardarMenuItem);
+        JMenuItem abrirMenuItem = new JMenuItem("Abrir");
+        abrirMenuItem.addActionListener(e -> mostrarDocumentos());
+        archivoMenu.add(abrirMenuItem);
+        JMenuItem imprimirMenuItem = new JMenuItem("Imprimir");
+        imprimirMenuItem.addActionListener(e -> imprimir());
+        archivoMenu.add(imprimirMenuItem);
+        menuBar.add(archivoMenu);
+        setJMenuBar(menuBar);
