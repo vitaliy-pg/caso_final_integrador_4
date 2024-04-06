@@ -218,3 +218,20 @@ public class EditorDeTextoInteractivo extends JFrame {
             abrirDocumento(archivoSeleccionado);
         }
     }
+
+    private void abrirDocumento(File archivo) {
+        try {
+            FileReader lector = new FileReader(archivo);
+            BufferedReader bufferedReader = new BufferedReader(lector);
+            String linea;
+            StringBuilder contenido = new StringBuilder();
+            while ((linea = bufferedReader.readLine()) != null) {
+                contenido.append(linea).append("\n");
+            }
+            textArea.setText(contenido.toString());
+            bufferedReader.close();
+            archivoActual = archivo;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al abrir el documento.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
