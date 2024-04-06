@@ -280,3 +280,17 @@ public class EditorDeTextoInteractivo extends JFrame {
         int cantidadPalabras = texto.split("\\s+").length;
         JOptionPane.showMessageDialog(this, "El documento tiene " + cantidadPalabras + " palabras.", "Conteo de Palabras", JOptionPane.INFORMATION_MESSAGE);
     }
+    private void buscarPalabra() {
+        String palabra = JOptionPane.showInputDialog(this, "Ingrese la palabra a buscar:");
+
+        if (palabra != null && !palabra.isEmpty()) {
+            String texto = textArea.getText();
+            int contador = 0;
+            int indice = texto.indexOf(palabra);
+            while (indice != -1) {
+                contador++;
+                indice = texto.indexOf(palabra, indice + 1);
+            }
+            JOptionPane.showMessageDialog(this, "La palabra '" + palabra + "' aparece " + contador + " veces en el documento.", "Búsqueda de Palabra", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
