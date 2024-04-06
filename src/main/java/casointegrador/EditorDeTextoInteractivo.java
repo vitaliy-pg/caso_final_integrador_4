@@ -72,3 +72,12 @@ public class EditorDeTextoInteractivo extends JFrame {
     private File archivoActual;
     private List<Contacto> listaContactos;
     private List<EditorDeTextoInteractivo> ventanas;
+    public EditorDeTextoInteractivo() {
+        super("Editor de Texto Interactivo");
+
+        textArea = new JTextArea(20, 40);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        fileChooser = new JFileChooser();
+        archivoActual = null;
+        listaContactos = new ArrayList<>();
+        ventanas = new ArrayList<>();
